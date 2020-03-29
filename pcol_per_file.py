@@ -37,7 +37,6 @@ def run(argv=None):
   gcs = GCSFileSystem(PipelineOptions(pipeline_args))
   gcs_reader = GCSFileReader(gcs)
 
-  # in my case I am looking for files that start with 'countries'
   BUCKET='BUCKET_NAME'
   result = [m.metadata_list for m in gcs.match(['gs://{}/sample*'.format(BUCKET)])]
   result = functools.reduce(add, result)
